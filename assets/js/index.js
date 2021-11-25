@@ -1,52 +1,79 @@
+// Global Variables
+
+// let battleOutcome = getLeaderBoard
 let wins = 0
 let loss = 0
 let draw = 0
-const userChoice = document.getElementById(".userChoice")
-const rockChoice = document.getElementById("#rockChoice")
-const paperChoice = document.getElementById("#paperChoice")
-const scissorChoice = document.getElementById("#scissorChoice")
-const userButton = document.getElementById(".userChoice button")
+const userChoice = document.getElementsByClassName("userChoice")[0]
+const rockChoice = document.getElementById("rockChoice")
+const paperChoice = document.getElementById("paperChoice")
+const scissorChoice = document.getElementById("scissorChoice")
+const userButton = document.querySelectorAll(".userChoice button")
 
+// Game function
 function game() {
+    // Add Event Listener to Button
     userButton.forEach(btn => {
-        
-        let opponentsChoice = Math.random();
-        if (opponentsChoice < .34) {
-            opponent = rockChoice;
-        }
-        else if (opponentsChoice > .67) {
-            opponentsChoice = paperChoice;
-        }
-        else {
-            opponentsChoice = scissorChoice;
-        }
+        btn.addEventListener('click', (e) => {
+            // Opponent Choice is random
+            console.log(btn)
+            let opponentsChoice = Math.floor(Math.random() * 3);
+            console.log(opponentsChoice)
+            if (opponentsChoice === 0) {
+                opponentsChoice = rockChoice;
+            }
+            else if (opponentsChoice === 1) {
+                opponentsChoice = paperChoice;
+            }
+            else {
+                opponentsChoice = scissorChoice;
+            }
 
-        let battleOutcome = function (userChoice, opponentsChoice) {
-            if (userChoice === opponentsChoice)
+            // User Choice of Rock/Paper/Scissor
+            let battleOutcome = function (userChoice, opponentsChoice) {
+
+            }
+            if (btn === opponentsChoice) {
+                draw++;
                 return draw;
-        }
+            }
 
-        if (userChoice === rockChoice) {
-            if (opponentsChoice === scissorChoice) {
-                return wins;
-            } else {
-                return loss;
+            // User Rock Choice
+            if (btn === rockChoice) {
+
+                if (opponentsChoice === scissorChoice) {
+                    wins++;
+                    return wins;
+                } else {
+                    loss++;
+                    return loss;
+                }
             }
-        }
-        if (userChoice === paperChoice) {
-            if (opponentsChoice === rockChoice) {
-                return wins;
-            } else {
-                return loss;
+
+            // User Paper Choice
+            if (btn === paperChoice) {
+                if (opponentsChoice === rockChoice) {
+                    wins++;
+                    return wins;
+                } else {
+                    loss++;
+                    return loss;
+                }
             }
-        }
-        if (userChoice === scissorChoice) {
-            if (opponentsChoice === paperChoice) {
-                return wins;
-            } else {
-                return loss;
-            }
-        };
-    }
-})
+
+            // User Scissor Choice
+            if (btn === scissorChoice) {
+                if (opponentsChoice === paperChoice) {
+                    wins++;
+                    return wins;
+                } else {
+                    loss++;
+                    return loss;
+                }
+            };
+        })
+    })
+}
+
+// Invoke Game
 game()
