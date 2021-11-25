@@ -1,13 +1,15 @@
 #userPicture {
     width: 200px;
-    height: 500px;
+    height: 200px;
+    border-radius: 100px;
 }
-#oppenentPicture {
+#opponentPicture {
     width: 200px;
-    height: 500px;
+    height: 200px;
+    border-radius: 100px;
 }
 
-.imgActionChoice {
+.imgUserChoice {
     width: 125px;
     height: 100px;
     border-radius: 20px;
