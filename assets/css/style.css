@@ -1,19 +1,64 @@
-#userPicture {
-    width: 200px;
-    height: 200px;
-    border-radius: 100px;
+/* Desktop */
+@media (min-width: 1600px) {
+    body   {
+        background: url("../images/chalkboard_background.jpg");
+        background-size: cover;
+    }
+    
+    #userPicture {
+        margin: 8em 0em 0em 8em;
+        width: 15em;
+        height: 15em;
+        border-radius: 50%;
+        float: left;
+    }
+    #opponentPicture {
+        margin: 8em 8em 0em 0em;
+        width: 15em;
+        height: 15em;
+        border-radius: 50%;
+        float: right;
+    }
+    .imgUserChoice {
+        margin-top: 25em;
+        width: 8em;
+        height: 8em;
+        border-radius: 40%;
+    }
 }
-#opponentPicture {
-    width: 200px;
-    height: 200px;
-    border-radius: 100px;
+/* Mobile */
+@media (max-width: 1600px) {
+    body   {
+        background: url("../images/chalkboard_background_mobile.jpg") no-repeat center center fixed;
+    }
+    
+    #userPicture {
+        margin: 2em 0em 0em 2em;
+        width: 5em;
+        height: 5em;
+        border-radius: 50%;
+        float: left;
+    }
+    #opponentPicture {
+        margin: 2em 2em 0em 0em;
+        width: 5em;
+        height: 5em;
+        border-radius: 50%;
+        float: right;
+    }
+    .imgUserChoice {
+        width: 3em;
+        height: 3em;
+        border-radius: 40%;
+    }
+    .userChoice  {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
-.imgUserChoice {
-    width: 125px;
-    height: 100px;
-    border-radius: 20px;
-}
+
+
 
 button, input[type="submit"], input[type="reset"] {
 	background: none;
@@ -23,8 +68,4 @@ button, input[type="submit"], input[type="reset"] {
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
-}
-
-body {
-    background-color: aqua;
 }
