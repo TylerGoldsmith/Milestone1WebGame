@@ -9,6 +9,7 @@ const rockChoice = document.getElementById("rockChoice")
 const paperChoice = document.getElementById("paperChoice")
 const scissorChoice = document.getElementById("scissorChoice")
 const userButton = document.querySelectorAll(".userChoice button")
+// let drawGame = ["rock", "paper", "scissor"]
 
 // Game function
 function game() {
@@ -16,17 +17,19 @@ function game() {
     userButton.forEach(btn => {
         btn.addEventListener('click', (e) => {
             // Opponent Choice is random
-            console.log(btn)
             let opponentsChoice = Math.floor(Math.random() * 3);
             console.log(opponentsChoice)
             if (opponentsChoice === 0) {
                 opponentsChoice = rockChoice;
+                // opponentsChoice = drawGame;
             }
             else if (opponentsChoice === 1) {
                 opponentsChoice = paperChoice;
+                // opponentsChoice = drawGame;
             }
             else {
                 opponentsChoice = scissorChoice;
+                // opponentsChoice = drawGame;
             }
 
             // User Choice of Rock/Paper/Scissor
@@ -35,6 +38,8 @@ function game() {
             }
             if (btn === opponentsChoice) {
                 draw++;
+                alert("User and opponent chose same item, it's a tie")
+                // alert("User and opponent chose ${drawGame}, it's a tie")
                 return draw;
             }
 
@@ -43,9 +48,11 @@ function game() {
 
                 if (opponentsChoice === scissorChoice) {
                     wins++;
+                    alert("Opponent chose scissors, user wins")
                     return wins;
                 } else {
                     loss++;
+                    alert("Opponent chose paper, user loses")
                     return loss;
                 }
             }
@@ -54,9 +61,11 @@ function game() {
             if (btn === paperChoice) {
                 if (opponentsChoice === rockChoice) {
                     wins++;
+                    alert("Opponent chose rock, user wins")
                     return wins;
                 } else {
                     loss++;
+                    alert("Opponent chose scissors, user loses")
                     return loss;
                 }
             }
@@ -65,15 +74,20 @@ function game() {
             if (btn === scissorChoice) {
                 if (opponentsChoice === paperChoice) {
                     wins++;
+                    alert("Opponent chose paper, user wins")
                     return wins;
                 } else {
                     loss++;
+                    alert("Opponent chose rock, user loses")
                     return loss;
                 }
             };
         })
     })
 }
-
 // Invoke Game
 game()
+// Alert on record
+function alertRecord()   {
+    alert("Wins: " + wins + " Losses: " + loss + " Draws: " + draw) 
+}
