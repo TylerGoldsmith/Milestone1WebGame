@@ -9,7 +9,7 @@ const rockChoice = document.getElementById("rockChoice")
 const paperChoice = document.getElementById("paperChoice")
 const scissorChoice = document.getElementById("scissorChoice")
 const userButton = document.querySelectorAll(".userChoice button")
-// let drawGame = ["rock", "paper", "scissor"]
+const drawGameChoice = []
 
 // Game function
 function game() {
@@ -18,18 +18,14 @@ function game() {
         btn.addEventListener('click', (e) => {
             // Opponent Choice is random
             let opponentsChoice = Math.floor(Math.random() * 3);
-            console.log(opponentsChoice)
             if (opponentsChoice === 0) {
                 opponentsChoice = rockChoice;
-                // opponentsChoice = drawGame;
             }
             else if (opponentsChoice === 1) {
                 opponentsChoice = paperChoice;
-                // opponentsChoice = drawGame;
             }
             else {
                 opponentsChoice = scissorChoice;
-                // opponentsChoice = drawGame;
             }
 
             // User Choice of Rock/Paper/Scissor
@@ -37,9 +33,18 @@ function game() {
 
             }
             if (btn === opponentsChoice) {
+                
+                // if (opponentsChoice = rockChoice) {
+                //     drawGameChoice = "rock"
+                // } else if (opponentsChoice = paperChoice) {
+                //     drawGameChoice = "paper"
+                // }
+                // else if (opponentsChoice = scissorChoice) {
+                //     drawGameChoice = "scissors"
+
+                // }
                 draw++;
-                alert("User and opponent chose same item, it's a tie")
-                // alert("User and opponent chose ${drawGame}, it's a tie")
+                alert("Opponent Chose " + drawGameChoice + ", it's a tie")
                 return draw;
             }
 
@@ -88,6 +93,6 @@ function game() {
 // Invoke Game
 game()
 // Alert on record
-function alertRecord()   {
-    alert("Wins: " + wins + " Losses: " + loss + " Draws: " + draw) 
+function alertRecord() {
+    alert("Wins: " + wins + " Losses: " + loss + " Draws: " + draw)
 }
