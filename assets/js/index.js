@@ -9,8 +9,44 @@ const rockChoice = document.getElementById("rockChoice")
 const paperChoice = document.getElementById("paperChoice")
 const scissorChoice = document.getElementById("scissorChoice")
 const userButton = document.querySelectorAll(".userChoice button")
-const drawGameChoice = []
-
+// 
+// Opponent Image Array
+var imgOpponentArray = new Array();
+// Opponent 2
+imgOpponentArray[0] = new Image();
+imgOpponentArray[0].src = 'assets/images/opponents/opponent1.png';
+// Opponent 3
+imgOpponentArray[1] = new Image();
+imgOpponentArray[1].src = 'assets/images/opponents/';
+// Opponent 4
+imgOpponentArray[2] = new Image();
+imgOpponentArray[2].src = 'assets/images/opponents/';
+// Opponent 5
+imgOpponentArray[3] = new Image();
+imgOpponentArray[3].src = 'assets/images/opponents/';
+// Opponent 6
+imgOpponentArray[4] = new Image();
+imgOpponentArray[4].src = 'assets/images/opponents/';
+// Opponent 7
+imgOpponentArray[5] = new Image();
+imgOpponentArray[5].src = 'assets/images/opponents/';
+// Opponent 8
+imgOpponentArray[6] = new Image();
+imgOpponentArray[6].src = 'assets/images/opponents/';
+// 
+// For wording if there is a draw
+function drawGame() {
+    console.log(rockChoice)
+    if (opponentsChoice = rockChoice) {
+        drawGameChoice = "rock"
+    } else if (opponentsChoice = paperChoice) {
+        drawGameChoice = "paper"
+    }
+    else if (opponentsChoice = scissorChoice) {
+        drawGameChoice = "scissors"
+        console.log(drawGame)
+    }
+}
 // Game function
 function game() {
     // Add Event Listener to Button
@@ -18,6 +54,8 @@ function game() {
         btn.addEventListener('click', (e) => {
             // Opponent Choice is random
             let opponentsChoice = Math.floor(Math.random() * 3);
+
+            // Assigns  opponent values that are picked at random
             if (opponentsChoice === 0) {
                 opponentsChoice = rockChoice;
             }
@@ -33,18 +71,9 @@ function game() {
 
             }
             if (btn === opponentsChoice) {
-                
-                // if (opponentsChoice = rockChoice) {
-                //     drawGameChoice = "rock"
-                // } else if (opponentsChoice = paperChoice) {
-                //     drawGameChoice = "paper"
-                // }
-                // else if (opponentsChoice = scissorChoice) {
-                //     drawGameChoice = "scissors"
-
-                // }
                 draw++;
-                alert("Opponent Chose " + drawGameChoice + ", it's a tie")
+                drawGame()
+                alert("Opponent chose " + drawGameChoice + ", it's a tie")
                 return draw;
             }
 
@@ -90,9 +119,38 @@ function game() {
         })
     })
 }
+
 // Invoke Game
 game()
 // Alert on record
 function alertRecord() {
     alert("Wins: " + wins + " Losses: " + loss + " Draws: " + draw)
+}
+
+// Change Opponent when win
+
+
+
+/*------------------------------------*/
+
+function nextOpponentImage(element)
+{
+    var img = document.getElementById(element);
+
+    for(var i = 0;i<imgOpponentArray.length;i++)
+    {
+        if(imgOpponentArray[i] == img)
+        {
+            if(i == imgOpponentArray.length)
+            {
+                var j = 0;
+                document.getElementById(element).src = imgArray[j].src;
+                break;
+            }
+            else
+            var j = i + 1;
+            document.getElementById(element).src = imgArray[j].src;
+            break;
+        }
+    }   
 }
