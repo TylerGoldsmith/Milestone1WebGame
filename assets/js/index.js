@@ -19,6 +19,32 @@ var imgOpponentArray = ["assets/images/opponents/opponent1.png",
     "assets/images/opponents/opponent6.png",
     "assets/images/opponents/opponent7.png"];
 
+// Hero Image Array Idle
+var heroIdleAnimationArray = ["assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block Idle_0.png",
+"assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block Idle_1.png",
+"assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block Idle_2.png",
+"assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block Idle_3.png",
+"assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block Idle_4.png",
+"assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block Idle_5.png",
+"assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block Idle_6.png",
+"assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block Idle_7.png"]
+
+// Hero Idle Animation
+async function heroIdle() {
+    var heroIdle = document.getElementById("userPicture");
+    for (var i = 0; i < heroIdleAnimationArray.length; i++) {
+        if (heroIdle.src.endsWith(heroIdleAnimationArray[i])) {
+            if (i == heroIdleAnimationArray.length - 1) {
+                var j = 0;
+                heroIdle.src = heroIdleAnimationArray[j];
+            }
+            else
+                var j = i + 1;
+            heroIdle.src = heroIdleAnimationArray[j];
+        }
+    }
+}
+
 // For wording if there is a draw
 function drawGame() {
     console.log(rockChoice)
@@ -33,6 +59,7 @@ function drawGame() {
 }
 // Game function
 function game() {
+    
     // Add Event Listener to Button
     userButton.forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -50,10 +77,6 @@ function game() {
                 opponentsChoice = scissorChoice;
             }
 
-            // User Choice of Rock/Paper/Scissor
-            let battleOutcome = function (userChoice, opponentsChoice) {
-
-            }
             if (btn === opponentsChoice) {
                 draw++;
                 drawGame();
@@ -119,36 +142,20 @@ function alertRecord() {
 function nextOpponentImage() {
     var imgOpponent = document.getElementById("opponentPictureMain");
     for (var i = 0; i < imgOpponentArray.length; i++) {
-        console.log("2")
-        console.log(imgOpponent.src)
-        console.log(imgOpponentArray[i])
         if (imgOpponent.src.endsWith(imgOpponentArray[i])) {
             console.log("3")
             if (i == imgOpponentArray.length - 1) {
-                console.log("4")
                 var j = 0;
                 imgOpponent.src = imgOpponentArray[j];
                 break;
             }
             else
-            console.log("4")
                 var j = i + 1;
             imgOpponent.src = imgOpponentArray[j];
             break;
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 // High Scores API

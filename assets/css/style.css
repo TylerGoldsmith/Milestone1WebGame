@@ -1,7 +1,7 @@
 /* Desktop */
 @media (min-width: 1600px) {
     body   {
-        background: url("../images/chalkboard_background.jpg");
+        background: url("../images/chalkboard_background_green_n.jpg") no-repeat center center fixed;
         background-size: cover;
     }
     
@@ -36,7 +36,7 @@
 /* Mobile */
 @media (max-width: 1600px) {
     body   {
-        background: url("../images/chalkboard_background_mobile.jpg") no-repeat center center fixed;
+        background: url("../images/chalkboard_background_green.jpg") no-repeat center center fixed;
         background-size: cover;
     }
     
