@@ -47,7 +47,7 @@
         border-radius: 50%;
         float: left;
     }
-    #opponentPicture {
+    #opponentPictureMain {
         margin: 2em 2em 0em 0em;
         width: 5em;
         height: 5em;
@@ -82,4 +82,3 @@
 	cursor: pointer;
 	outline: inherit;
 }
-

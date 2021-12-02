@@ -11,29 +11,14 @@ const scissorChoice = document.getElementById("scissorChoice")
 const userButton = document.querySelectorAll(".userChoice button")
 // 
 // Opponent Image Array
-var imgOpponentArray = new Array();
-// Opponent 2
-imgOpponentArray[0] = new Image();
-imgOpponentArray[0].src = 'assets/images/opponents/opponent1.png';
-// Opponent 3
-imgOpponentArray[1] = new Image();
-imgOpponentArray[1].src = 'assets/images/opponents/';
-// Opponent 4
-imgOpponentArray[2] = new Image();
-imgOpponentArray[2].src = 'assets/images/opponents/';
-// Opponent 5
-imgOpponentArray[3] = new Image();
-imgOpponentArray[3].src = 'assets/images/opponents/';
-// Opponent 6
-imgOpponentArray[4] = new Image();
-imgOpponentArray[4].src = 'assets/images/opponents/';
-// Opponent 7
-imgOpponentArray[5] = new Image();
-imgOpponentArray[5].src = 'assets/images/opponents/';
-// Opponent 8
-imgOpponentArray[6] = new Image();
-imgOpponentArray[6].src = 'assets/images/opponents/';
-// 
+var imgOpponentArray = ["assets/images/opponents/opponent1.png",
+    "assets/images/opponents/opponent2.png",
+    "assets/images/opponents/opponent3.png",
+    "assets/images/opponents/opponent4.png",
+    "assets/images/opponents/opponent5.png",
+    "assets/images/opponents/opponent6.png",
+    "assets/images/opponents/opponent7.png"];
+
 // For wording if there is a draw
 function drawGame() {
     console.log(rockChoice)
@@ -44,7 +29,6 @@ function drawGame() {
     }
     else if (opponentsChoice = scissorChoice) {
         drawGameChoice = "scissors"
-        console.log(drawGame)
     }
 }
 // Game function
@@ -72,8 +56,8 @@ function game() {
             }
             if (btn === opponentsChoice) {
                 draw++;
-                drawGame()
-                alert("Opponent chose " + drawGameChoice + ", it's a tie")
+                drawGame();
+                alert("Opponent chose " + drawGameChoice + ", it's a tie");
                 return draw;
             }
 
@@ -82,11 +66,12 @@ function game() {
 
                 if (opponentsChoice === scissorChoice) {
                     wins++;
-                    alert("Opponent chose scissors, user wins")
+                    alert("Opponent chose scissors, user wins");
+                    nextOpponentImage();
                     return wins;
                 } else {
                     loss++;
-                    alert("Opponent chose paper, user loses")
+                    alert("Opponent chose paper, user loses");
                     return loss;
                 }
             }
@@ -95,11 +80,12 @@ function game() {
             if (btn === paperChoice) {
                 if (opponentsChoice === rockChoice) {
                     wins++;
-                    alert("Opponent chose rock, user wins")
+                    alert("Opponent chose rock, user wins");
+                    nextOpponentImage();
                     return wins;
                 } else {
                     loss++;
-                    alert("Opponent chose scissors, user loses")
+                    alert("Opponent chose scissors, user loses");
                     return loss;
                 }
             }
@@ -108,18 +94,19 @@ function game() {
             if (btn === scissorChoice) {
                 if (opponentsChoice === paperChoice) {
                     wins++;
-                    alert("Opponent chose paper, user wins")
+                    alert("Opponent chose paper, user wins");
+                    nextOpponentImage();
                     return wins;
                 } else {
                     loss++;
-                    alert("Opponent chose rock, user loses")
+                    alert("Opponent chose rock, user loses");
                     return loss;
                 }
             };
         })
     })
 }
-
+document.getElementById("opponentPictureMain").src = "assets/images/opponents/opponent1.png";
 // Invoke Game
 game()
 // Alert on record
@@ -129,28 +116,74 @@ function alertRecord() {
 
 // Change Opponent when win
 
-
-
-/*------------------------------------*/
-
-function nextOpponentImage(element)
-{
-    var img = document.getElementById(element);
-
-    for(var i = 0;i<imgOpponentArray.length;i++)
-    {
-        if(imgOpponentArray[i] == img)
-        {
-            if(i == imgOpponentArray.length)
-            {
+function nextOpponentImage() {
+    var imgOpponent = document.getElementById("opponentPictureMain");
+    for (var i = 0; i < imgOpponentArray.length; i++) {
+        console.log("2")
+        console.log(imgOpponent.src)
+        console.log(imgOpponentArray[i])
+        if (imgOpponent.src.endsWith(imgOpponentArray[i])) {
+            console.log("3")
+            if (i == imgOpponentArray.length - 1) {
+                console.log("4")
                 var j = 0;
-                document.getElementById(element).src = imgArray[j].src;
+                imgOpponent.src = imgOpponentArray[j];
                 break;
             }
             else
-            var j = i + 1;
-            document.getElementById(element).src = imgArray[j].src;
+            console.log("4")
+                var j = i + 1;
+            imgOpponent.src = imgOpponentArray[j];
             break;
         }
-    }   
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// High Scores API
+
+const api_base_url = "<GET_THIS_FROM_INSTRUCTOR>"
+const apiKey = "<GET_THIS_FROM_INSTRUCTOR>"
+
+async function getHighScores() {
+    let response = await fetch(api_base_url, {
+        headers : {
+            "x-api-key": apiKey
+        }
+    })
+    let highscores = await response.json()
+    return highscores;
+}
+
+
+async function sendHighScore(scoreData, UserId) {
+    let response = await fetch(api_base_url, {
+        method: "POST",
+        headers : {
+            "x-api-key": apiKey,
+            "Content-Type": "application/json",   
+        },
+        body:  JSON.stringify({
+            Data: scoreData,
+            UserId: UserId
+        })
+    })
+    let data = await response.json()
+    //does new highscore show up?
+    console.log('new',data)
+
+    let highscores = await getHighScores();
+    console.log(highscores)
+
 }
