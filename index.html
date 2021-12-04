@@ -1,64 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web Game</title>
     <!-- internal css -->
-    <link 
-    rel="stylesheet"
-    href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <!-- external js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 </head>
+
 <body>
     <main>
-        <div>
-            <!-- flex box to make the pictures inline -->
-            <img 
-            id="userPicture" 
-            src="assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block Idle_0.png"
-            alt="User Picture">
-        </div>
-        <div>
-            <img 
-            id="opponentPictureMain" 
-            src="assets/images/opponents/opponent1.png"
-            alt="Opponent Picture 1">
-        </div>
-        <!-- User Choice Between Rock/Paper/Scissor -->
-        <div class="userChoice">
-            <button id="rockChoice">
-                <img 
-                    class="imgUserChoice"
-                    src="assets/images/rock.png"
-                    alt="Rock Choice">
-            </button>
-            <button id="paperChoice">
-                <img 
-                class="imgUserChoice"
-                src="assets/images/paper.png"
-                alt="Paper Choice">
-            </button>
-            <button id="scissorChoice">
-                <img 
-                class="imgUserChoice"
-                src="assets/images/scissors.png"
-                alt="Scissor Choice">
-            </button>
-        </div>
-        <!-- Alert -->
-        <div id="alertBox_WLD">
-            <button onclick="alertRecord()">See Score</button>
-        </div>
-        <!-- Audio -->
-        <div id="sound">
-            <audio controls>
-                <source src="assets/sounds/SchoolDay.ogg" type="audio/ogg">
-              Your browser does not support the audio element.
-              </audio>
-        </div>
+        <section id="battleBox">
+            <!-- User vs Opponent -->
+            <div id="userVsOpponent">
+
+                <div id="userIdleAnimation">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block_Idle_0.png">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block_Idle_1.png">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block_Idle_2.png">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block_Idle_3.png">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block_Idle_4.png">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block_Idle_5.png">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block_Idle_6.png">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block_Idle_7.png">
+                </div>
+                <!-- User Light Image -->
+                <div id="userLightAnimation">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack2/HeroKnight_Attack2_0.png">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack2/HeroKnight_Attack2_1.png">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack2/HeroKnight_Attack2_2.png">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack2/HeroKnight_Attack2_3.png">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack2/HeroKnight_Attack2_4.png">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack2/HeroKnight_Attack2_5.png">
+                </div>
+                <!-- User Block Image -->
+                <div id="userBlockAnimation">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Block/HeroKnight_Block_0.png">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Block/HeroKnight_Block_1.png">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Block/HeroKnight_Block_2.png">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Block/HeroKnight_Block_3.png">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Block/HeroKnight_Block_4.png">
+                </div>
+                <!-- User Heavy Image -->
+                <div id="userHeavyAnimation">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack1/HeroKnight_Attack1_0.png">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack1/HeroKnight_Attack1_1.png">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack1/HeroKnight_Attack1_2.png">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack1/HeroKnight_Attack1_3.png">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack1/HeroKnight_Attack1_4.png">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack1/HeroKnight_Attack1_5.png">
+                </div>
+
+
+            </div>
+            <!-- User Idle Image -->
+
+            <!-- Opponent Images -->
+            <div>
+                <img id="opponentPictureMain" src="assets/images/opponents/opponent1.png" alt="Opponent Picture 1">
+            </div>
+            <!-- User Choice Between Heavy/Block/Light -->
+            <div class="userChoice">
+                <button id="rockChoice">
+                    <img class="imgUserChoice" src="assets/images/rock.png" alt="Rock Choice">
+                </button>
+                <button id="paperChoice">
+                    <img class="imgUserChoice" src="assets/images/paper.png" alt="Paper Choice">
+                </button>
+                <button id="scissorChoice">
+                    <img class="imgUserChoice" src="assets/images/scissors.png" alt="Scissor Choice">
+                </button>
+            </div>
+            <!-- Alert -->
+            <div id="alertBox_WLD">
+                <button onclick="alertRecord()">See Score</button>
+            </div>
+            <!-- Audio -->
+            <div id="sound">
+                <audio controls>
+                    <source src="assets/sounds/SchoolDay.ogg" type="audio/ogg">
+                    Your browser does not support the audio element.
+                </audio>
+            </div>
+        </section>
     </main>
-<!-- internal js -->
-<script src="assets/js/index.js"></script>
+    <!-- internal js -->
+    <script src="assets/js/index.js"></script>
 </body>
+
 </html>
