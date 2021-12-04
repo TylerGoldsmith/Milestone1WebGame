@@ -9,6 +9,16 @@ const rockChoice = document.getElementById("rockChoice")
 const paperChoice = document.getElementById("paperChoice")
 const scissorChoice = document.getElementById("scissorChoice")
 const userButton = document.querySelectorAll(".userChoice button")
+const userIdle = $("#userIdleAnimation")
+const userLight = $("#userLightAnimation")
+const userBlock = $("#userBlockAnimation")
+const userHeavy = $("#userHeavyAnimation")
+var detachedLight = userLight.detach();
+var detachedBlock = userBlock.detach();
+var detachedHeavy = userHeavy.detach();
+
+
+
 // 
 // Opponent Image Array
 var imgOpponentArray = ["assets/images/opponents/opponent1.png",
@@ -19,35 +29,69 @@ var imgOpponentArray = ["assets/images/opponents/opponent1.png",
     "assets/images/opponents/opponent6.png",
     "assets/images/opponents/opponent7.png"];
 
-// Hero Image Array Idle
-var heroIdleAnimationArray = ["assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block Idle_0.png",
-"assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block Idle_1.png",
-"assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block Idle_2.png",
-"assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block Idle_3.png",
-"assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block Idle_4.png",
-"assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block Idle_5.png",
-"assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block Idle_6.png",
-"assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block Idle_7.png"]
+onload = function heroIdle() {
+    var frames = document.getElementById("userIdleAnimation").children;
+    var frameCount = frames.length;
+    var i = 0;
+    setInterval(function () {
+        frames[i % frameCount].style.display = "none";
+        frames[++i % frameCount].style.display = "block";
+    }, 100);
+}
 
-// Hero Idle Animation
-async function heroIdle() {
-    var heroIdle = document.getElementById("userPicture");
-    for (var i = 0; i < heroIdleAnimationArray.length; i++) {
-        if (heroIdle.src.endsWith(heroIdleAnimationArray[i])) {
-            if (i == heroIdleAnimationArray.length - 1) {
-                var j = 0;
-                heroIdle.src = heroIdleAnimationArray[j];
+// Hero Light Function
+async function heroLight() {
+    let frames = document.getElementById("userLightAnimation").children;
+    let frameCount = frames.length;
+    let i = 0;
+    return await new Promise(resolve => {
+        let interval = setInterval(function () {
+            frames[i % frameCount].style.display = "none";
+            frames[++i % frameCount].style.display = "block";
+            if (i == 6) {
+                clearInterval(interval);
+                resolve();
             }
-            else
-                var j = i + 1;
-            heroIdle.src = heroIdleAnimationArray[j];
-        }
-    }
+        }, 250);
+    })
+}
+
+// Hero Block Function
+async function heroBlock() {
+    let frames = document.getElementById("userBlockAnimation").children;
+    let frameCount = frames.length;
+    let i = 0;
+    return await new Promise(resolve => {
+        let interval = setInterval(function () {
+            frames[i % frameCount].style.display = "none";
+            frames[++i % frameCount].style.display = "block";
+            if (i == 5) {
+                clearInterval(interval);
+                resolve();
+            }
+        }, 250);
+    })
+}
+
+// Hero Heavy Function
+async function heroHeavy() {
+    let frames = document.getElementById("userHeavyAnimation").children;
+    let frameCount = frames.length;
+    let i = 0;
+    return await new Promise(resolve => {
+        let interval = setInterval(function () {
+            frames[i % frameCount].style.display = "none";
+            frames[++i % frameCount].style.display = "block";
+            if (i == 6) {
+                clearInterval(interval);
+                resolve();
+            }
+        }, 250);
+    })
 }
 
 // For wording if there is a draw
 function drawGame() {
-    console.log(rockChoice)
     if (opponentsChoice = rockChoice) {
         drawGameChoice = "rock"
     } else if (opponentsChoice = paperChoice) {
@@ -57,12 +101,39 @@ function drawGame() {
         drawGameChoice = "scissors"
     }
 }
+
+// Animation for different types of attack
+async function displayAnimation(btn) {
+    var detachedIdle = userIdle.detach();
+    // User
+    // Scissor
+    if (btn === scissorChoice) {
+        detachedLight.appendTo("body");
+        await heroLight();
+        detachedLight = userLight.detach();
+    }
+    // Rock
+    else if (btn === rockChoice) {
+        detachedBlock.appendTo("body");
+        await heroBlock();
+        detachedBlock = userBlock.detach();
+    }
+    // Paper
+    else if (btn === paperChoice) {
+        detachedHeavy.appendTo("body");
+        await heroHeavy();
+        detachedHeavy = userHeavy.detach();
+    }
+    detachedIdle.appendTo("body");
+}
+
 // Game function
 function game() {
-    
+
     // Add Event Listener to Button
     userButton.forEach(btn => {
         btn.addEventListener('click', (e) => {
+            displayAnimation(btn);
             // Opponent Choice is random
             let opponentsChoice = Math.floor(Math.random() * 3);
 
@@ -80,7 +151,7 @@ function game() {
             if (btn === opponentsChoice) {
                 draw++;
                 drawGame();
-                alert("Opponent chose " + drawGameChoice + ", it's a tie");
+                // alert("Opponent chose " + drawGameChoice + ", it's a tie");
                 return draw;
             }
 
@@ -89,12 +160,12 @@ function game() {
 
                 if (opponentsChoice === scissorChoice) {
                     wins++;
-                    alert("Opponent chose scissors, user wins");
+                    // alert("Opponent chose scissors, user wins");
                     nextOpponentImage();
                     return wins;
                 } else {
                     loss++;
-                    alert("Opponent chose paper, user loses");
+                    // alert("Opponent chose paper, user loses");
                     return loss;
                 }
             }
@@ -103,12 +174,12 @@ function game() {
             if (btn === paperChoice) {
                 if (opponentsChoice === rockChoice) {
                     wins++;
-                    alert("Opponent chose rock, user wins");
+                    // alert("Opponent chose rock, user wins");
                     nextOpponentImage();
                     return wins;
                 } else {
                     loss++;
-                    alert("Opponent chose scissors, user loses");
+                    // alert("Opponent chose scissors, user loses");
                     return loss;
                 }
             }
@@ -117,12 +188,12 @@ function game() {
             if (btn === scissorChoice) {
                 if (opponentsChoice === paperChoice) {
                     wins++;
-                    alert("Opponent chose paper, user wins");
+                    // alert("Opponent chose paper, user wins");
                     nextOpponentImage();
                     return wins;
                 } else {
                     loss++;
-                    alert("Opponent chose rock, user loses");
+                    // alert("Opponent chose rock, user loses");
                     return loss;
                 }
             };
@@ -165,7 +236,7 @@ const apiKey = "<GET_THIS_FROM_INSTRUCTOR>"
 
 async function getHighScores() {
     let response = await fetch(api_base_url, {
-        headers : {
+        headers: {
             "x-api-key": apiKey
         }
     })
@@ -177,18 +248,18 @@ async function getHighScores() {
 async function sendHighScore(scoreData, UserId) {
     let response = await fetch(api_base_url, {
         method: "POST",
-        headers : {
+        headers: {
             "x-api-key": apiKey,
-            "Content-Type": "application/json",   
+            "Content-Type": "application/json",
         },
-        body:  JSON.stringify({
+        body: JSON.stringify({
             Data: scoreData,
             UserId: UserId
         })
     })
     let data = await response.json()
     //does new highscore show up?
-    console.log('new',data)
+    console.log('new', data)
 
     let highscores = await getHighScores();
     console.log(highscores)

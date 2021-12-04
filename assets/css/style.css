@@ -82,3 +82,51 @@
 	cursor: pointer;
 	outline: inherit;
 }
+
+#userIdleAnimation img {
+    display: none;
+}
+#userIdleAnimation img:first-child {
+    display: block;
+} 
+
+#userLightAnimation img {
+    display: none;
+}
+#userLightAnimation img:first-child {
+    display: block;
+} 
+
+#userBlockAnimation img {
+    display: none;
+}
+#userBlockAnimation img:first-child {
+    display: block;
+} 
+
+#userHeavyAnimation img {
+    display: none;
+}
+#userHeavyAnimation img:first-child {
+    display: block;
+} 
+
+
+
+
+
+/* 
+
+*/
+
+#battleBox  {
+    display: flex;
+}
+
+#userVsOpponent {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 10px solid black;
+    background-image: url(assets/images/backgroundlayers/layers/bgback.png) z-index;
+}
