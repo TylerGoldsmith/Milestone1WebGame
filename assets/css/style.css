@@ -7,16 +7,7 @@ body   {
     width: 64px;
     height: 64px;
     border-radius: 50%;
-    align-items: right;
-}
-
-#alertBox_WLD button    {
-    width:100px;
-    height:100px;
-    margin: 2em 0em 0em 10em;
-    width: 20em;
-    height: 4em;
-    border-radius: 40%;
+    float: right;
 }
 
 #alertBox_WLD button    {
@@ -51,6 +42,7 @@ body   {
 /*  */
 #userVsOpponent {
     display: flex;
+    flex-direction: row;
     border: 10px solid black;
     height: 272px;
     width: 480px;
@@ -58,7 +50,7 @@ body   {
 }
 /* Background Images */
 /*  */
-#bg1 {
+/* #bg1 {
     position: absolute;
     z-index: 10;
     height: 272px;
@@ -81,13 +73,11 @@ body   {
     z-index: 40;
     height: 272px;
     width: 480px;
-}
+} */
 /* Idle Animation */
 /*  */
 #userIdleAnimation img {
     display: none;
-    position: absolute;
-    float: center;
     z-index: 100;
 }
 /* Animation Appear */
@@ -98,8 +88,6 @@ body   {
 /* Light User Animation */
 #userLightAnimation img {
     display: none;
-    position: absolute;
-    float: center;
     z-index: 100;
 }
 /* Animation Appear */
@@ -109,8 +97,6 @@ body   {
 /* Block User Animation */
 #userBlockAnimation img {
     display: none;
-    position: absolute;
-    float: center;
     z-index: 100;
 }
 /* Animation Appear */
@@ -120,8 +106,6 @@ body   {
 /* Heavy User Animation */
 #userHeavyAnimation img {
     display: none;
-    position: absolute;
-    float: center;
     z-index: 100;
 }
 Animation Appear

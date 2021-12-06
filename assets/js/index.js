@@ -31,9 +31,9 @@ let imgOpponentArray = ["assets/images/opponents/opponent1.png",
 // Hero Animations
 // Hero Idle Animation Upon Page Load 
 onload = function heroIdle() {
-    let frames = document.getElementById("userIdleAnimation").children;
-    let frameCount = frames.length;
-    let i = 0;
+    var frames = document.getElementById("userIdleAnimation").children;
+    var frameCount = frames.length;
+    var i = 0;
     setInterval(function () {
         frames[i % frameCount].style.display = "none";
         frames[++i % frameCount].style.display = "block";
@@ -91,35 +91,34 @@ async function heroHeavy() {
 
 // Enemy Animation
 // Bat Animation
-onload = function batAnimationIdle() {
-    let frameWidth = 32;
-    let frames = 4;
-    let frame = 0;
-    let div = document.getElementById("batAnimationIdle");
-    setInterval(function () {
-        let frameOffset = (++frame % frames) * frameWidth;
-        div.style.backgroundPosition = "0px" + frameOffset + "px";
-    }, 100)
-}
+// onload = function batAnimationIdle() {
+//     let frameWidth = 32;
+//     let frames = 4;
+//     let frame = 0;
+//     let div = document.getElementById("batAnimationIdle");
+//     setInterval(function () {
+//         let frameOffset = (++frame % frames) * frameWidth;
+//         div.style.backgroundPosition = "0px" + frameOffset + "px";
+//     }, 100)
+// }
 
 // Animation for different types of attack
 async function displayAnimation(btn) {
-    console.log("hi")
-    var detachedIdle = userIdle.detach();
+    let detachedIdle = userIdle.detach();
     // User
-    // Scissor
+    // Light
     if (btn === lightChoice) {
         detachedLight.appendTo("body");
         await heroLight();
         detachedLight = userLight.detach();
     }
-    // Rock
+    // Block
     else if (btn === blockChoice) {
         detachedBlock.appendTo("body");
         await heroBlock();
         detachedBlock = userBlock.detach();
     }
-    // Paper
+    // Heavy
     else if (btn === heavyChoice) {
         detachedHeavy.appendTo("body");
         await heroHeavy();
@@ -134,7 +133,9 @@ function game() {
 
     // Add Event Listener to Button
     userButton.forEach(btn => {
+        displayAnimation(btn);
         btn.addEventListener('click', (e) => {
+
             // Opponent Choice is random
             let opponentsChoice = Math.floor(Math.random() * 3);
 
@@ -148,14 +149,14 @@ function game() {
             else {
                 opponentsChoice = lightChoice;
             }
-            displayAnimation(btn);
+
             if (btn === opponentsChoice) {
                 draw++;
                 drawGame();
                 return draw;
             }
 
-            // User Rock Choice
+            // User Block Choice
             if (btn === blockChoice) {
 
                 if (opponentsChoice === lightChoice) {
@@ -194,9 +195,9 @@ function game() {
         })
     })
 }
-// document.getElementById("opponentPictureMain").src = "assets/images/opponents/opponent1.png";
+document.getElementById("opponentPictureMain").src = "assets/images/opponents/opponent1.png";
 // // Invoke Game
-// game()
+game()
 // // Alert on record
 function alertRecord() {
     alert("Wins: " + wins + " Losses: " + loss + " Draws: " + draw)
@@ -205,57 +206,56 @@ function alertRecord() {
 // // Change Opponent when win
 
 // function nextOpponentImage() {
-    var imgOpponent = document.getElementById("opponentPictureMain");
-    for (var i = 0; i < imgOpponentArray.length; i++) {
-        if (imgOpponent.src.endsWith(imgOpponentArray[i])) {
-            console.log("3")
-            if (i == imgOpponentArray.length - 1) {
-                var j = 0;
-                imgOpponent.src = imgOpponentArray[j];
-                break;
-            }
-            else
-                var j = i + 1;
+let imgOpponent = document.getElementById("opponentPictureMain");
+for (let i = 0; i < imgOpponentArray.length; i++) {
+    if (imgOpponent.src.endsWith(imgOpponentArray[i])) {
+        if (i == imgOpponentArray.length - 1) {
+            let j = 0;
             imgOpponent.src = imgOpponentArray[j];
             break;
         }
+        else
+            var j = i + 1;
+        imgOpponent.src = imgOpponentArray[j];
+        break;
     }
+}
 
 
 
 // High Scores API
 
-const api_base_url = "<GET_THIS_FROM_INSTRUCTOR>"
-const apiKey = "<GET_THIS_FROM_INSTRUCTOR>"
+// const api_base_url = "<GET_THIS_FROM_INSTRUCTOR>"
+// const apiKey = "<GET_THIS_FROM_INSTRUCTOR>"
 
-async function getHighScores() {
-    let response = await fetch(api_base_url, {
-        headers: {
-            "x-api-key": apiKey
-        }
-    })
-    let highscores = await response.json()
-    return highscores;
-}
+// async function getHighScores() {
+//     let response = await fetch(api_base_url, {
+//         headers: {
+//             "x-api-key": apiKey
+//         }
+//     })
+//     let highscores = await response.json()
+//     return highscores;
+// }
 
 
-async function sendHighScore(scoreData, UserId) {
-    let response = await fetch(api_base_url, {
-        method: "POST",
-        headers: {
-            "x-api-key": apiKey,
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            Data: scoreData,
-            UserId: UserId
-        })
-    })
-    let data = await response.json()
-    //does new highscore show up?
-    console.log('new', data)
+// async function sendHighScore(scoreData, UserId) {
+//     let response = await fetch(api_base_url, {
+//         method: "POST",
+//         headers: {
+//             "x-api-key": apiKey,
+//             "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({
+//             Data: scoreData,
+//             UserId: UserId
+//         })
+//     })
+//     let data = await response.json()
+//     //does new highscore show up?
+//     console.log('new', data)
 
-    let highscores = await getHighScores();
-    console.log(highscores)
+//     let highscores = await getHighScores();
+//     console.log(highscores)
 
-}
+// }
