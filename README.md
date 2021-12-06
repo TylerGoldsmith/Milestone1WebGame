@@ -2,4 +2,5 @@
 by Tyler Goldmith
 
 ## Description
-Making an interactive web game, "Rock, Paper, Scissor" and adding complexity to it.
+Making an interactive web game in the style "Rock, Paper, Scissor" with heavy attack beating block, light attack beating heavy attack, and block beating light attack.
+##Instructions:
