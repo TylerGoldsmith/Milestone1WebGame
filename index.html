@@ -8,7 +8,7 @@
     <title>Web Game</title>
     <!-- internal css -->
     <link rel="stylesheet" href="assets/css/style.css" />
-    <!-- external js -->
+    <!-- external js jquery  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 </head>
@@ -18,74 +18,78 @@
         <section id="battleBox">
             <!-- User vs Opponent -->
             <div id="userVsOpponent">
-
+                <!-- User Idle Image -->
                 <div id="userIdleAnimation">
-                    <img src="assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block_Idle_0.png">
-                    <img src="assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block_Idle_1.png">
-                    <img src="assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block_Idle_2.png">
-                    <img src="assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block_Idle_3.png">
-                    <img src="assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block_Idle_4.png">
-                    <img src="assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block_Idle_5.png">
-                    <img src="assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block_Idle_6.png">
-                    <img src="assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block_Idle_7.png">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block_Idle_0.png" alt ="Hero Idle">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block_Idle_1.png" alt ="Hero Idle">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block_Idle_2.png" alt ="Hero Idle">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block_Idle_3.png" alt ="Hero Idle">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block_Idle_4.png" alt ="Hero Idle">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block_Idle_5.png" alt ="Hero Idle">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block_Idle_6.png" alt ="Hero Idle">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/BlockIdle/HeroKnight_Block_Idle_7.png" alt ="Hero Idle">
                 </div>
                 <!-- User Light Image -->
                 <div id="userLightAnimation">
-                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack2/HeroKnight_Attack2_0.png">
-                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack2/HeroKnight_Attack2_1.png">
-                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack2/HeroKnight_Attack2_2.png">
-                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack2/HeroKnight_Attack2_3.png">
-                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack2/HeroKnight_Attack2_4.png">
-                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack2/HeroKnight_Attack2_5.png">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack2/HeroKnight_Attack2_0.png" alt ="Hero Light Attack">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack2/HeroKnight_Attack2_1.png" alt ="Hero Light Attack">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack2/HeroKnight_Attack2_2.png" alt ="Hero Light Attack">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack2/HeroKnight_Attack2_3.png" alt ="Hero Light Attack">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack2/HeroKnight_Attack2_4.png" alt ="Hero Light Attack">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack2/HeroKnight_Attack2_5.png" alt ="Hero Light Attack">
                 </div>
                 <!-- User Block Image -->
                 <div id="userBlockAnimation">
-                    <img src="assets/images/heroImages/Sprites/HeroKnight/Block/HeroKnight_Block_0.png">
-                    <img src="assets/images/heroImages/Sprites/HeroKnight/Block/HeroKnight_Block_1.png">
-                    <img src="assets/images/heroImages/Sprites/HeroKnight/Block/HeroKnight_Block_2.png">
-                    <img src="assets/images/heroImages/Sprites/HeroKnight/Block/HeroKnight_Block_3.png">
-                    <img src="assets/images/heroImages/Sprites/HeroKnight/Block/HeroKnight_Block_4.png">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Block/HeroKnight_Block_0.png" alt ="Hero Block">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Block/HeroKnight_Block_1.png" alt ="Hero Block">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Block/HeroKnight_Block_2.png" alt ="Hero Block">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Block/HeroKnight_Block_3.png" alt ="Hero Block">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Block/HeroKnight_Block_4.png" alt ="Hero Block">
                 </div>
                 <!-- User Heavy Image -->
                 <div id="userHeavyAnimation">
-                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack1/HeroKnight_Attack1_0.png">
-                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack1/HeroKnight_Attack1_1.png">
-                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack1/HeroKnight_Attack1_2.png">
-                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack1/HeroKnight_Attack1_3.png">
-                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack1/HeroKnight_Attack1_4.png">
-                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack1/HeroKnight_Attack1_5.png">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack1/HeroKnight_Attack1_0.png" alt ="Hero Heavy Attack">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack1/HeroKnight_Attack1_1.png" alt ="Hero Heavy Attack">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack1/HeroKnight_Attack1_2.png" alt ="Hero Heavy Attack">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack1/HeroKnight_Attack1_3.png" alt ="Hero Heavy Attack">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack1/HeroKnight_Attack1_4.png" alt ="Hero Heavy Attack">
+                    <img src="assets/images/heroImages/Sprites/HeroKnight/Attack1/HeroKnight_Attack1_5.png" alt ="Hero Heavy Attack">
                 </div>
-
-
+                <!-- Opponent -->
+                <div>
+                    <img src="assets/images/opponents/opponent1.png" alt="Opponent" id="opponentPictureMain">
+                </div>
             </div>
-            <!-- User Idle Image -->
+            <!-- Background Images -->
+            <!-- <img src="assets/images/backgroundlayers/layers/bgback.png" id="bg1">;
+            <img src="assets/images/backgroundlayers/layers/bg2ndback.png" id="bg2">;
+            <img src="assets/images/backgroundlayers/layers/bg2ndfront.png" id="bg3">;
+            <img src="assets/images/backgroundlayers/layers/bgfront.png" id="bg4">;
+            </div> -->
+
 
             <!-- Opponent Images -->
-            <div>
-                <img id="opponentPictureMain" src="assets/images/opponents/opponent1.png" alt="Opponent Picture 1">
-            </div>
+
             <!-- User Choice Between Heavy/Block/Light -->
             <div class="userChoice">
-                <button id="rockChoice">
-                    <img class="imgUserChoice" src="assets/images/rock.png" alt="Rock Choice">
-                </button>
-                <button id="paperChoice">
-                    <img class="imgUserChoice" src="assets/images/paper.png" alt="Paper Choice">
-                </button>
-                <button id="scissorChoice">
-                    <img class="imgUserChoice" src="assets/images/scissors.png" alt="Scissor Choice">
-                </button>
+                <!-- <ul id="userChoiceList"> -->
+                <button id="blockChoice">Block Attack</button>
+                <button id="heavyChoice">Heavy Attack</button>
+                <button id="lightChoice">Light Attack</button>
+                <!-- </ul> -->
             </div>
+            <a href="attribution.html">Attributions</a>
             <!-- Alert -->
             <div id="alertBox_WLD">
                 <button onclick="alertRecord()">See Score</button>
             </div>
             <!-- Audio -->
-            <div id="sound">
+            <!-- <div id="sound">
                 <audio controls>
                     <source src="assets/sounds/SchoolDay.ogg" type="audio/ogg">
                     Your browser does not support the audio element.
-                </audio>
+                </audio> -->
+                
             </div>
         </section>
     </main>
