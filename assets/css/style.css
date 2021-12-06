@@ -1,78 +1,31 @@
 /* Desktop */
-@media (min-width: 1600px) {
-    body   {
-        background: url("../images/chalkboard_background_green_n.jpg") no-repeat center center fixed;
-        background-size: cover;
-    }
-    
-    #userPicture {
-        margin: 8em 0em 0em 8em;
-        width: 15em;
-        height: 15em;
-        border-radius: 50%;
-        float: left;
-    }
-    #opponentPictureMain {
-        margin: 8em 8em 0em 0em;
-        width: 15em;
-        height: 15em;
-        border-radius: 50%;
-        float: right;
-    }
-    .imgUserChoice {
-        margin-top: 25em;
-        width: 8em;
-        height: 8em;
-    }
-    #alertBox_WLD button    {
-        width:100px;
-        height:100px;
-        margin: 2em 0em 0em 10em;
-        width: 20em;
-        height: 4em;
-        border-radius: 40%;
-    }
+body   {
+    background-color: rgb(234, 255, 151);
 }
-/* Mobile */
-@media (max-width: 1600px) {
-    body   {
-        background: url("../images/chalkboard_background_green.jpg") no-repeat center center fixed;
-        background-size: cover;
-    }
     
-    #userPicture {
-        margin: 2em 0em 0em 2em;
-        width: 5em;
-        height: 5em;
-        border-radius: 50%;
-        float: left;
-    }
-    #opponentPictureMain {
-        margin: 2em 2em 0em 0em;
-        width: 5em;
-        height: 5em;
-        border-radius: 50%;
-        float: right;
-    }
-    .imgUserChoice {
-        width: 3em;
-        height: 3em;
-    }
-    .userChoice  {
-        display: flex;
-        flex-direction: column;
-    }
-    #alertBox_WLD button    {
-        display: block;
-        width:100px;
-        height:100px;
-        margin: 2em auto 0em auto;
-        width: 10em;
-        height: 2em;
-        border-radius: 40%;
-        text-align: center;
-    }
+#opponentPictureMain {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    align-items: right;
 }
+
+#alertBox_WLD button    {
+    width:100px;
+    height:100px;
+    margin: 2em 0em 0em 10em;
+    width: 20em;
+    height: 4em;
+    border-radius: 40%;
+}
+
+#alertBox_WLD button    {
+    display: block;
+    height:50px;
+    width: 480px;
+    justify-content: right;
+    }
+
 .userChoice button, input[type="submit"]    {
 	background: none;
 	color: inherit;
@@ -83,50 +36,107 @@
 	outline: inherit;
 }
 
+/* 
+
+*/
+
+/* Box Content */
+/* #battleBox  { */
+    /* display: flex;
+    justify-content: center;
+    flex-direction: column;
+} */
+/* Battle Screen */
+/* Formatting Box */
+/*  */
+#userVsOpponent {
+    display: flex;
+    border: 10px solid black;
+    height: 272px;
+    width: 480px;
+    z-index: 50;
+}
+/* Background Images */
+/*  */
+#bg1 {
+    position: absolute;
+    z-index: 10;
+    height: 272px;
+    width: 480px;
+}
+#bg2 {
+    position: absolute;
+    z-index: 20;
+    height: 272px;
+    width: 480px;
+}
+#bg3 {
+    position: absolute;
+    z-index: 30;
+    height: 272px;
+    width: 480px;
+}
+#bg4 {
+    position: absolute;
+    z-index: 40;
+    height: 272px;
+    width: 480px;
+}
+/* Idle Animation */
+/*  */
 #userIdleAnimation img {
     display: none;
+    position: absolute;
+    float: center;
+    z-index: 100;
 }
+/* Animation Appear */
+/*  */
 #userIdleAnimation img:first-child {
     display: block;
 } 
-
+/* Light User Animation */
 #userLightAnimation img {
     display: none;
+    position: absolute;
+    float: center;
+    z-index: 100;
 }
+/* Animation Appear */
 #userLightAnimation img:first-child {
     display: block;
 } 
-
+/* Block User Animation */
 #userBlockAnimation img {
     display: none;
+    position: absolute;
+    float: center;
+    z-index: 100;
 }
+/* Animation Appear */
 #userBlockAnimation img:first-child {
     display: block;
 } 
-
+/* Heavy User Animation */
 #userHeavyAnimation img {
     display: none;
+    position: absolute;
+    float: center;
+    z-index: 100;
 }
+Animation Appear
 #userHeavyAnimation img:first-child {
     display: block;
 } 
 
 
-
-
-
-/* 
-
-*/
-
-#battleBox  {
-    display: flex;
-}
-
-#userVsOpponent {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    border: 10px solid black;
-    background-image: url(assets/images/backgroundlayers/layers/bgback.png) z-index;
-}
+/* Unused
+/* Bat Animation Idle  */
+/* #batAnimationIdle { 
+    height: 32px;
+    width: 32px;
+    background: url("/assets/images/opponents/Bat/Bat_Fly.png");
+    background-repeat: no-repeat;
+    z-index: 200;
+    position: absolute;
+} */
