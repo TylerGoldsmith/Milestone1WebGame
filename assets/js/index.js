@@ -1,9 +1,8 @@
 // Global Variables
 
-// let battleOutcome = getLeaderBoard
-let wins = 0
-let loss = 0
-let draw = 0
+var wins = 0
+var loss = 0
+var draw = 0
 const userChoice = document.getElementsByClassName("userChoice")[0]
 const blockChoice = document.getElementById("blockChoice")
 const heavyChoice = document.getElementById("heavyChoice")
@@ -14,13 +13,13 @@ const userLight = $("#userLightAnimation")
 const userBlock = $("#userBlockAnimation")
 const userHeavy = $("#userHeavyAnimation")
 // const versus = $("#userVsOpponent")
-let detachedLight = userLight.detach();
-let detachedBlock = userBlock.detach();
-let detachedHeavy = userHeavy.detach();
+var detachedLight = userLight.detach();
+var detachedBlock = userBlock.detach();
+var detachedHeavy = userHeavy.detach();
 
 // 
 // Opponent Image Array
-let imgOpponentArray = ["assets/images/opponents/opponent1.png",
+var imgOpponentArray = ["assets/images/opponents/opponent1.png",
     "assets/images/opponents/opponent2.png",
     "assets/images/opponents/opponent3.png",
     "assets/images/opponents/opponent4.png",
@@ -31,9 +30,9 @@ let imgOpponentArray = ["assets/images/opponents/opponent1.png",
 // Hero Animations
 // Hero Idle Animation Upon Page Load 
 onload = function heroIdle() {
-    var frames = document.getElementById("userIdleAnimation").children;
-    var frameCount = frames.length;
-    var i = 0;
+    let frames = document.getElementById("userIdleAnimation").children;
+    let frameCount = frames.length;
+    let i = 0;
     setInterval(function () {
         frames[i % frameCount].style.display = "none";
         frames[++i % frameCount].style.display = "block";
@@ -54,8 +53,8 @@ async function heroLight() {
                 resolve();
             }
         }, 250);
-    });
-};
+    })
+}
 // Hero Block Function
 async function heroBlock() {
     let frames = document.getElementById("userBlockAnimation").children;
@@ -70,8 +69,9 @@ async function heroBlock() {
                 resolve();
             }
         }, 250);
-    });
+    })
 };
+
 // Hero Heavy Function
 async function heroHeavy() {
     let frames = document.getElementById("userHeavyAnimation").children;
@@ -86,8 +86,8 @@ async function heroHeavy() {
                 resolve();
             }
         }, 250);
-    });
-};
+    })
+}
 
 // Enemy Animation
 // Bat Animation
@@ -108,24 +108,44 @@ async function displayAnimation(btn) {
     // User
     // Light
     if (btn === lightChoice) {
-        detachedLight.appendTo("body");
+        detachedLight.appendTo("#userVsOpponent");
         await heroLight();
         detachedLight = userLight.detach();
     }
     // Block
     else if (btn === blockChoice) {
-        detachedBlock.appendTo("body");
+        detachedBlock.appendTo("#userVsOpponent");
         await heroBlock();
         detachedBlock = userBlock.detach();
     }
     // Heavy
     else if (btn === heavyChoice) {
-        detachedHeavy.appendTo("body");
+        detachedHeavy.appendTo("#userVsOpponent");
         await heroHeavy();
         detachedHeavy = userHeavy.detach();
     };
-    detachedIdle.appendTo("body");
+    detachedIdle.appendTo("#userVsOpponent");
 };
+
+
+function nextOpponentImage() {
+    var imgOpponent = document.getElementById("opponentPictureMain");
+    for (var i = 0; i < imgOpponentArray.length; i++) {
+        if (imgOpponent.src.endsWith(imgOpponentArray[i])) {
+            if (i == imgOpponentArray.length - 1) {
+                var j = 0;
+                imgOpponent.src = imgOpponentArray[j];
+                break;
+            }
+            else
+            var j = i + 1;
+            imgOpponent.src = imgOpponentArray[j];
+            break;
+        }
+    }
+}
+
+
 
 
 // Game function
@@ -133,9 +153,8 @@ function game() {
 
     // Add Event Listener to Button
     userButton.forEach(btn => {
-        displayAnimation(btn);
         btn.addEventListener('click', (e) => {
-
+            displayAnimation(btn);
             // Opponent Choice is random
             let opponentsChoice = Math.floor(Math.random() * 3);
 

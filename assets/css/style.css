@@ -1,8 +1,62 @@
-/* Desktop */
+/* Page Background Color */
 body   {
     background-color: rgb(234, 255, 151);
 }
-    
+
+/* Box Content */
+#battleBox  {
+    border: 10px solid black;
+    width: 591px;
+    display: flex;
+    flex-direction: column;
+}
+/* Battle Screen */
+/* Formatting Box */
+/*  */
+#userVsOpponent {
+    display: flex;
+    flex-direction: row;
+    border-bottom: 10px solid black;
+    background-image: url(../images/backgroundlayers/background_woods.png);
+    height: 272px;
+    width: 591px;
+}
+
+/* Idle Animation */
+/*  */
+#userIdleAnimation img {
+    display: none;
+}
+/* Animation Appear */
+/*  */
+#userIdleAnimation img:first-child {
+    display: block;
+} 
+/* Light User Animation */
+#userLightAnimation img {
+    display: none;
+}
+/* Animation Appear */
+#userLightAnimation img:first-child {
+    display: block;
+} 
+/* Block User Animation */
+#userBlockAnimation img {
+    display: none;
+}
+/* Animation Appear */
+#userBlockAnimation img:first-child {
+    display: block;
+} 
+/* Heavy User Animation */
+#userHeavyAnimation img {
+    display: none;
+}
+/* Animation Appear */
+#userHeavyAnimation img:first-child {
+    display: block;
+} 
+/* Opponent Image Formatting */
 #opponentPictureMain {
     width: 64px;
     height: 64px;
@@ -10,13 +64,14 @@ body   {
     float: right;
 }
 
-#alertBox_WLD button    {
-    display: block;
-    height:50px;
-    width: 480px;
-    justify-content: right;
-    }
 
+
+
+
+
+
+
+/* Button Block Heavy Light */
 .userChoice button, input[type="submit"]    {
 	background: none;
 	color: inherit;
@@ -27,91 +82,22 @@ body   {
 	outline: inherit;
 }
 
-/* 
+/* Attributions Link */
 
-*/
 
-/* Box Content */
-/* #battleBox  { */
-    /* display: flex;
-    justify-content: center;
-    flex-direction: column;
-} */
-/* Battle Screen */
-/* Formatting Box */
-/*  */
-#userVsOpponent {
-    display: flex;
-    flex-direction: row;
-    border: 10px solid black;
-    height: 272px;
-    width: 480px;
-    z-index: 50;
-}
-/* Background Images */
-/*  */
-/* #bg1 {
-    position: absolute;
-    z-index: 10;
-    height: 272px;
-    width: 480px;
-}
-#bg2 {
-    position: absolute;
-    z-index: 20;
-    height: 272px;
-    width: 480px;
-}
-#bg3 {
-    position: absolute;
-    z-index: 30;
-    height: 272px;
-    width: 480px;
-}
-#bg4 {
-    position: absolute;
-    z-index: 40;
-    height: 272px;
-    width: 480px;
-} */
-/* Idle Animation */
-/*  */
-#userIdleAnimation img {
-    display: none;
-    z-index: 100;
-}
-/* Animation Appear */
-/*  */
-#userIdleAnimation img:first-child {
+
+
+
+/* See Score Button */
+#alertBox_WLD button    {
     display: block;
-} 
-/* Light User Animation */
-#userLightAnimation img {
-    display: none;
-    z-index: 100;
-}
-/* Animation Appear */
-#userLightAnimation img:first-child {
-    display: block;
-} 
-/* Block User Animation */
-#userBlockAnimation img {
-    display: none;
-    z-index: 100;
-}
-/* Animation Appear */
-#userBlockAnimation img:first-child {
-    display: block;
-} 
-/* Heavy User Animation */
-#userHeavyAnimation img {
-    display: none;
-    z-index: 100;
-}
-Animation Appear
-#userHeavyAnimation img:first-child {
-    display: block;
-} 
+    height: 25px;
+    width: 591px;
+    justify-content: right;
+    }
+
+
+
 
 
 /* Unused
