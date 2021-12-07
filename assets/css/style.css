@@ -9,6 +9,7 @@ body   {
     width: 591px;
     display: flex;
     flex-direction: column;
+    background:rgb(141, 114, 72);
 }
 /* Battle Screen */
 /* Formatting Box */
@@ -31,6 +32,7 @@ body   {
 /*  */
 #userIdleAnimation img:first-child {
     display: block;
+    position: absolute;
 } 
 /* Light User Animation */
 #userLightAnimation img {
@@ -57,11 +59,12 @@ body   {
     display: block;
 } 
 /* Opponent Image Formatting */
-#opponentPictureMain {
+#opponentIdleAnimation img:first-child {
     width: 64px;
     height: 64px;
     border-radius: 50%;
     float: right;
+    position: absolute;
 }
 
 
@@ -73,16 +76,19 @@ body   {
 
 /* Button Block Heavy Light */
 .userChoice button, input[type="submit"]    {
-	background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	font: inherit;
-	cursor: pointer;
-	outline: inherit;
+width: 100%;
+text-align: left;
+background: rgb(141, 114, 72);
 }
+/* Styling Fighting Options */
+.userChoice {
+    background-color: rgb(146, 130, 52);
+}
+/* Remove Bullets */
+ul {
+    list-style-type: none;
+ }
 
-/* Attributions Link */
 
 
 
@@ -90,10 +96,9 @@ body   {
 
 /* See Score Button */
 #alertBox_WLD button    {
-    display: block;
-    height: 25px;
-    width: 591px;
-    justify-content: right;
+    width: 100%;
+    text-align: left;
+    background: rgb(141, 114, 72);
     }
 
 

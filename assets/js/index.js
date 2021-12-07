@@ -8,26 +8,50 @@ const blockChoice = document.getElementById("blockChoice")
 const heavyChoice = document.getElementById("heavyChoice")
 const lightChoice = document.getElementById("lightChoice")
 const userButton = document.querySelectorAll(".userChoice button")
+const attributionButton = document.querySelector("#toAttributions button")
+// User J Query Animations
 const userIdle = $("#userIdleAnimation")
 const userLight = $("#userLightAnimation")
 const userBlock = $("#userBlockAnimation")
 const userHeavy = $("#userHeavyAnimation")
+const userDraw = $("#userDrawAnimation")
+const userWin = $("#userWinAnimation")
+const userDeath = $("#userDeathAnimation")
+// Opponent J Query Animations
+const opponentIdle = $("#opponentIdleAnimation")
+const opponentLight = $("#opponentLightAnimation")
+const opponentBlock = $("#opponentBlockAnimation")
+const opponentHeavy = $("#opponentHeavyAnimation")
+const opponentDraw = $("#opponentDrawAnimation")
+const opponentWin = $("#opponentWinAnimation")
+const opponentDeath = $("#opponentDeathAnimation")
+// Detach Globals
+var detachedUserLight = userLight.detach();
+var detachedUserBlock = userBlock.detach();
+var detachedUserHeavy = userHeavy.detach();
+var detachedUserDraw = userDraw.detach();
+var detachedUserWin = userWin.detach();
+var detachedUserDeath = userDeath.detach();
+var detachedOpponentLight = opponentLight.detach();
+var detachedOpponentBlock = opponentBlock.detach();
+var detachedOpponentHeavy = opponentHeavy.detach();
+var detachedOpponentDraw = opponentDraw.detach();
+var detachedOpponentWin = opponentWin.detach();
+var detachedOpponentDeath = opponentDeath.detach();
 // const versus = $("#userVsOpponent")
-var detachedLight = userLight.detach();
-var detachedBlock = userBlock.detach();
-var detachedHeavy = userHeavy.detach();
 
 // 
 // Opponent Image Array
-var imgOpponentArray = ["assets/images/opponents/opponent1.png",
-    "assets/images/opponents/opponent2.png",
-    "assets/images/opponents/opponent3.png",
-    "assets/images/opponents/opponent4.png",
-    "assets/images/opponents/opponent5.png",
-    "assets/images/opponents/opponent6.png",
-    "assets/images/opponents/opponent7.png"];
+// var imgOpponentArray = ["assets/images/opponents/Bat/bat_gif.gif",
+//     "assets/images/opponents/opponent2.png",
+//     "assets/images/opponents/opponent3.png",
+//     "assets/images/opponents/opponent4.png",
+//     "assets/images/opponents/opponent5.png",
+//     "assets/images/opponents/opponent6.png",
+//     "assets/images/opponents/opponent7.png"];
 
 // Hero Animations
+
 // Hero Idle Animation Upon Page Load 
 onload = function heroIdle() {
     let frames = document.getElementById("userIdleAnimation").children;
@@ -81,7 +105,57 @@ async function heroHeavy() {
         let interval = setInterval(function () {
             frames[i % frameCount].style.display = "none";
             frames[++i % frameCount].style.display = "block";
-            if (i == 6) {
+            if (i == 8) {
+                clearInterval(interval);
+                resolve();
+            }
+        }, 250);
+    })
+}
+// Hero Draw Animation
+async function heroDraw() {
+    let frames = document.getElementById("userDrawAnimation").children;
+    let frameCount = frames.length;
+    let i = 0;
+    return await new Promise(resolve => {
+        let interval = setInterval(function () {
+            frames[i % frameCount].style.display = "none";
+            frames[++i % frameCount].style.display = "block";
+            if (i == 3) {
+                clearInterval(interval);
+                resolve();
+            }
+        }, 250);
+    })
+}
+
+// Hero Win Animation
+async function heroWin() {
+    let frames = document.getElementById("userWinAnimation").children;
+    let frameCount = frames.length;
+    let i = 0;
+    return await new Promise(resolve => {
+        let interval = setInterval(function () {
+            frames[i % frameCount].style.display = "none";
+            frames[++i % frameCount].style.display = "block";
+            if (i == 8) {
+                clearInterval(interval);
+                resolve();
+            }
+        }, 250);
+    })
+}
+
+// Hero Death Animation
+async function heroDeath() {
+    let frames = document.getElementById("userDeathAnimation").children;
+    let frameCount = frames.length;
+    let i = 0;
+    return await new Promise(resolve => {
+        let interval = setInterval(function () {
+            frames[i % frameCount].style.display = "none";
+            frames[++i % frameCount].style.display = "block";
+            if (i == 10) {
                 clearInterval(interval);
                 resolve();
             }
@@ -104,46 +178,77 @@ async function heroHeavy() {
 
 // Animation for different types of attack
 async function displayAnimation(btn) {
-    let detachedIdle = userIdle.detach();
+    let detachedUserIdle = userIdle.detach();
+    let detachedOpponentIdle = opponentIdle.detach();
     // User
     // Light
     if (btn === lightChoice) {
-        detachedLight.appendTo("#userVsOpponent");
+        detachedUserLight.appendTo("#userVsOpponent");
         await heroLight();
-        detachedLight = userLight.detach();
+        if (draw++) {
+            opponentLight();
+            detachedOpponentLight = opponentLight.detach();
+            detachedUserLight = userLight.detach();
+            await userDraw();
+            enemyDraw();
+        } else if (loss++) {
+            opponentBlock();
+            detachedOpponentBlock =opponentBlock.detach();
+            detachedUserLight = userLight.detach();
+            await userDeath();
+            opponentWin();
+        } else if (win++) {
+            opponentHeavy();
+            detachedOppHeavy = opponentHeavy.detach();
+            detachedUserLight = userLight.detach();
+            await userWin();
+            opponentDeath();
+            detachedOpponentDeathAnimation = opponentDeath.detach();
+        }
     }
+// detachedUserLight = opponentLight.detach();
+    
     // Block
     else if (btn === blockChoice) {
-        detachedBlock.appendTo("#userVsOpponent");
+        detachedUserBlock.appendTo("#userVsOpponent");
         await heroBlock();
-        detachedBlock = userBlock.detach();
+        if (draw++) {
+            opponentBlock();
+            detachedUserBlock = userBlock.detach();
+        }
+
     }
     // Heavy
     else if (btn === heavyChoice) {
-        detachedHeavy.appendTo("#userVsOpponent");
+        detachedUserHeavy.appendTo("#userVsOpponent");
         await heroHeavy();
-        detachedHeavy = userHeavy.detach();
+        detachedUserHeavy = userHeavy.detach();
     };
-    detachedIdle.appendTo("#userVsOpponent");
+    detachedUserIdle.appendTo("#userVsOpponent");
+    detachedOpponentIdle.appendTo("#userVsOpponent");
 };
 
 
-function nextOpponentImage() {
-    var imgOpponent = document.getElementById("opponentPictureMain");
-    for (var i = 0; i < imgOpponentArray.length; i++) {
-        if (imgOpponent.src.endsWith(imgOpponentArray[i])) {
-            if (i == imgOpponentArray.length - 1) {
-                var j = 0;
-                imgOpponent.src = imgOpponentArray[j];
-                break;
-            }
-            else
-            var j = i + 1;
-            imgOpponent.src = imgOpponentArray[j];
-            break;
-        }
-    }
-}
+// Change Opponent Image to Next
+// Define Image to source so it won't define as page source
+document.getElementById("opponentIdleAnimation").src = "assets/images/opponents/Bat/bat_fly_gif.gif";
+// Function to invoke to change image
+// function nextOpponentImage() {
+//     var imgOpponent = document.getElementById("opponentIdleAnimation");
+//     for (var i = 0; i < imgOpponentArray.length; i++) {
+//         if (imgOpponent.src.endsWith(imgOpponentArray[i])) {
+//             if (i == imgOpponentArray.length - 1) {
+//                 var j = 0;
+//                 imgOpponent.src = imgOpponentArray[j];
+//                 break;
+//             }
+//             else
+//                 var j = i + 1;
+//             imgOpponent.src = imgOpponentArray[j];
+//             break;
+//         }
+//     }
+// }
 
 
 
@@ -171,7 +276,8 @@ function game() {
 
             if (btn === opponentsChoice) {
                 draw++;
-                drawGame();
+                // drawGame();
+                // displayAnimation(btn);
                 return draw;
             }
 
@@ -181,100 +287,49 @@ function game() {
                 if (opponentsChoice === lightChoice) {
                     wins++;
                     nextOpponentImage();
+                    // displayAnimation();
                     return wins;
                 } else {
                     loss++;
+                    // displayAnimation();
                     return loss;
                 }
             }
 
-            // User Paper Choice
+            // User Heavy Choice
             if (btn === heavyChoice) {
                 if (opponentsChoice === blockChoice) {
                     wins++;
                     nextOpponentImage();
+                    // displayAnimation();
                     return wins;
                 } else {
                     loss++;
+                    // displayAnimation();
                     return loss;
                 }
             }
 
-            // User Scissor Choice
+            // User Light Choice
             if (btn === lightChoice) {
                 if (opponentsChoice === heavyChoice) {
                     wins++;
-                    nextOpponentImage();
+                    // nextOpponentImage();
+                    // displayAnimation(btn);
                     return wins;
                 } else {
                     loss++;
+                    // displayAnimation(btn);
                     return loss;
                 }
             };
         })
     })
 }
-document.getElementById("opponentPictureMain").src = "assets/images/opponents/opponent1.png";
+
 // // Invoke Game
 game()
 // // Alert on record
 function alertRecord() {
     alert("Wins: " + wins + " Losses: " + loss + " Draws: " + draw)
 }
-
-// // Change Opponent when win
-
-// function nextOpponentImage() {
-let imgOpponent = document.getElementById("opponentPictureMain");
-for (let i = 0; i < imgOpponentArray.length; i++) {
-    if (imgOpponent.src.endsWith(imgOpponentArray[i])) {
-        if (i == imgOpponentArray.length - 1) {
-            let j = 0;
-            imgOpponent.src = imgOpponentArray[j];
-            break;
-        }
-        else
-            var j = i + 1;
-        imgOpponent.src = imgOpponentArray[j];
-        break;
-    }
-}
-
-
-
-// High Scores API
-
-// const api_base_url = "<GET_THIS_FROM_INSTRUCTOR>"
-// const apiKey = "<GET_THIS_FROM_INSTRUCTOR>"
-
-// async function getHighScores() {
-//     let response = await fetch(api_base_url, {
-//         headers: {
-//             "x-api-key": apiKey
-//         }
-//     })
-//     let highscores = await response.json()
-//     return highscores;
-// }
-
-
-// async function sendHighScore(scoreData, UserId) {
-//     let response = await fetch(api_base_url, {
-//         method: "POST",
-//         headers: {
-//             "x-api-key": apiKey,
-//             "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify({
-//             Data: scoreData,
-//             UserId: UserId
-//         })
-//     })
-//     let data = await response.json()
-//     //does new highscore show up?
-//     console.log('new', data)
-
-//     let highscores = await getHighScores();
-//     console.log(highscores)
-
-// }
