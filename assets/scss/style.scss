@@ -1,0 +1,45 @@
+@import "config";
+@import "button";
+
+/* Remove Bullets */
+ul {
+  list-style-type: none;
+}
+
+/* Page Background Color */
+body {
+  background-color: rgb(234, 255, 151);
+}
+
+/* Box Content */
+#battleBox {
+  border: 10px solid black;
+  width: 591px;
+  display: flex;
+  flex-direction: column;
+  background: $background-color;
+}
+/* Battle Screen */
+/* Formatting Box */
+/*  */
+#userVsOpponent {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 10px solid black;
+  background-image: url(../images/backgroundlayers/background_woods.png);
+  height: 272px;
+  width: 591px;
+}
+
+/* Opponent Image Formatting */
+#opponentIdleAnimation {
+  img {
+    &:first-child {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      float: right;
+      position: absolute;
+    }
+  }
+}

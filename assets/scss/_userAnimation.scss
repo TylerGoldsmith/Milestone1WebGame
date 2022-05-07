@@ -1,0 +1,26 @@
+@import "userAnimations";
+@import "utilities";
+
+/* Idle Animation */
+/*  */
+#userIdleAnimation {
+    @include animation-mixin
+}
+
+/* Light User Animation */
+/* */
+#userLightAnimation {
+    @include animation-mixin
+}
+
+/* Block Animation */
+/* */
+#userBlockAnimation {
+    @include animation-mixin
+}
+
+/* Heavy User Animation */
+/* */
+#userHeavyAnimation {
+    @include animation-mixin
+}

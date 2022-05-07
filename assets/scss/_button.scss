@@ -1,0 +1,20 @@
+@import "config";
+@import "utilities";
+
+/* Button Block Heavy Light */
+/* */
+.userChoice {
+  background-color: rgb(146, 130, 52);
+  button,
+  input[type="submit"] {
+    @include button-settings;
+  }
+}
+
+/* See Score Button */
+/* */
+#alertBox_WLD {
+  button {
+    @include button-settings;
+  }
+}

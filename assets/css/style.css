@@ -1,117 +1,61 @@
+/* Button Block Heavy Light */
+/* */
+.userChoice {
+  background-color: rgb(146, 130, 52);
+}
+.userChoice button,
+.userChoice input[type=submit] {
+  width: 100%;
+  text-align: left;
+  background: rgb(141, 114, 72);
+}
+
+/* See Score Button */
+/* */
+#alertBox_WLD button {
+  width: 100%;
+  text-align: left;
+  background: rgb(141, 114, 72);
+}
+
+/* Remove Bullets */
+ul {
+  list-style-type: none;
+}
+
 /* Page Background Color */
-body   {
-    background-color: rgb(234, 255, 151);
+body {
+  background-color: rgb(234, 255, 151);
 }
 
 /* Box Content */
-#battleBox  {
-    border: 10px solid black;
-    width: 591px;
-    display: flex;
-    flex-direction: column;
-    background:rgb(141, 114, 72);
+#battleBox {
+  border: 10px solid black;
+  width: 591px;
+  display: flex;
+  flex-direction: column;
+  background: rgb(141, 114, 72);
 }
+
 /* Battle Screen */
 /* Formatting Box */
 /*  */
 #userVsOpponent {
-    display: flex;
-    flex-direction: row;
-    border-bottom: 10px solid black;
-    background-image: url(../images/backgroundlayers/background_woods.png);
-    height: 272px;
-    width: 591px;
+  display: flex;
+  flex-direction: row;
+  border-bottom: 10px solid black;
+  background-image: url(../images/backgroundlayers/background_woods.png);
+  height: 272px;
+  width: 591px;
 }
 
-/* Idle Animation */
-/*  */
-#userIdleAnimation img {
-    display: none;
-}
-/* Animation Appear */
-/*  */
-#userIdleAnimation img:first-child {
-    display: block;
-    position: absolute;
-} 
-/* Light User Animation */
-#userLightAnimation img {
-    display: none;
-}
-/* Animation Appear */
-#userLightAnimation img:first-child {
-    display: block;
-} 
-/* Block User Animation */
-#userBlockAnimation img {
-    display: none;
-}
-/* Animation Appear */
-#userBlockAnimation img:first-child {
-    display: block;
-} 
-/* Heavy User Animation */
-#userHeavyAnimation img {
-    display: none;
-}
-/* Animation Appear */
-#userHeavyAnimation img:first-child {
-    display: block;
-} 
 /* Opponent Image Formatting */
 #opponentIdleAnimation img:first-child {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    float: right;
-    position: absolute;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  float: right;
+  position: absolute;
 }
 
-
-
-
-
-
-
-
-/* Button Block Heavy Light */
-.userChoice button, input[type="submit"]    {
-width: 100%;
-text-align: left;
-background: rgb(141, 114, 72);
-}
-/* Styling Fighting Options */
-.userChoice {
-    background-color: rgb(146, 130, 52);
-}
-/* Remove Bullets */
-ul {
-    list-style-type: none;
- }
-
-
-
-
-
-
-/* See Score Button */
-#alertBox_WLD button    {
-    width: 100%;
-    text-align: left;
-    background: rgb(141, 114, 72);
-    }
-
-
-
-
-
-/* Unused
-/* Bat Animation Idle  */
-/* #batAnimationIdle { 
-    height: 32px;
-    width: 32px;
-    background: url("/assets/images/opponents/Bat/Bat_Fly.png");
-    background-repeat: no-repeat;
-    z-index: 200;
-    position: absolute;
-} */
+/*# sourceMappingURL=style.css.map */

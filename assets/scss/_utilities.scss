@@ -1,0 +1,16 @@
+@import "config";
+
+@mixin animation-mixin {
+  img {
+    display: none;
+    &:first-child {
+      display: block;
+    }
+  }
+}
+
+@mixin button-settings {
+    width: 100%;
+    text-align: left;
+    background: $background-color;
+}
